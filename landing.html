@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida a Progrentis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .header-bg {
+            background: linear-gradient(135deg, #0062cc, #0097ff);
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-bg:before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            bottom: -150%;
+            left: -50%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40%;
+            animation: wave 15s infinite linear;
+        }
+        
+        @keyframes wave {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            background-color: white;
+            display: inline-block;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .logo {
+            max-width: 200px;
+        }
+        
+        .main-content {
+            padding: 30px 40px 40px;
+            background-color: white;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+            padding: 15px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: #0062cc;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0062cc, #0097ff);
+            border-radius: 3px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            color: #292929;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .intro {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 30px;
+            border-left: 3px solid #0097ff;
+            padding-left: 15px;
+            background-color: #f7faff;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(90deg, #ffed80, #ffdf00);
+            color: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0, 124, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0062cc, #0097ff);
+        }
+        
+        .benefit-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #0062cc, #0097ff);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0, 97, 204, 0.3);
+        }
+        
+        .benefit-title {
+            color: #0062cc;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+        
+        .benefit-content {
+            padding-left: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        ul li:before {
+            content: "✓";
+            color: #0097ff;
+            font-weight: bold;
+            display: inline-block;
+            width: 20px;
+            margin-left: -20px;
+        }
+        
+        .video-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .video-container {
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .video-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-left: 25px solid #0062cc;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0062cc, #0097ff);
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+        
+        .button:after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .button:hover:after {
+            transform: rotate(30deg) translate(10%, 10%);
+        }
+        
+        .signature {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .signature-name {
+            font-weight: 600;
+            color: #0062cc;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .signature-title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #242830, #3a3f48);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            border-radius: 0 0 16px 16px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            margin: 15px 0;
+        }
+        
+        .social-button {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 5px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-button:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 650px) {
+            .main-content {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-bg">
+            <div class="header-content">
+                <h1>¡Bienvenidos a Progrentis!</h1>
+            </div>
+        </div>
+        
+        <div style="text-align: center; columns: auto;">
+            <div class="logo-container">
+                <img src="logo2.png" alt="Logo Progrentis" class="logo" >
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <p class="greeting">¡Buenos días Personal de Lawrence School!</p>
+            
+            <div class="intro">
+                <p>Reciban todos un cordial saludo de parte de nuestro equipo de <strong>Operaciones, Soporte, Servicio y Calidad</strong> de Grupo Mentora Latinoamérica y Caribe.</p>
+                
+                <p>Mi nombre es <strong>Nathan Castillo Coto</strong>, soy la persona encargada de brindar seguimiento a la implementación de Progrentis a su institución.</p>
+            </div>
+            
+            <p>El motivo por el cual les envío este correo electrónico es para traerles <span class="highlight">¡buenas noticias!</span> A partir del día de hoy les hemos habilitado sus accesos a Progrentis, el cual contiene un acceso individual para cada docente a una cuenta de <strong>Progrentis Analítica</strong> donde estarán gozando de <strong>beneficios que impactarán de forma positiva su ámbito profesional y personal.</strong></p>
+            
+            <h2>Beneficios Exclusivos para Docentes</h2>
+            
+            <div class="benefit-card">
+                <div class="benefit-number">1</div>
+                <div class="benefit-title">Acceso como Tutores a Matrícula Progrentis</div>
+                <div class="benefit-content">
+                    <p>Les estamos brindando acceso como tutores a una <strong>Matrícula Progrentis</strong> similar a la que utilizan los estudiantes, para que puedan trabajar de forma individual en el <strong>desarrollo de destrezas y habilidades necesarias hoy en día</strong>, similar a como la realizan nuestros chicos en el aula.</p>
+                    
+                    <p>Nuestra finalidad es motivarlos a todos a que puedan:</p>
+                    <ul>
+                        <li>Trabajar en el espacio de Progrentis asignado a cada uno</li>
+                        <li>Entrenar en nuestro gimnasio para la mente</li>
+                        <li>Participar en nuestros sorteos realizados de manera trimestral</li>
+                        <li>Obtener su certificado al concluir las 20 unidades (reconocido por el servicio civil como curso de aprovechamiento)</li>
+                    </ul>
+                    
+                    <p>Y de igual manera, que puedan transmitir la motivación a sus estudiantes de todos los beneficios que estarán adquiriendo al trabajar disciplinadamente en Progrentis.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-number">2</div>
+                <div class="benefit-title">Acceso a Progrentis FORUM</div>
+                <div class="benefit-content">
+                    <p>Les estamos brindando acceso a Progrentis FORUM, un <strong>espacio virtual de formación docente que impulsa la innovación educativa, para que los profesores enseñen a los estudiantes a aprender a aprender.</strong></p>
+                    
+                    <p>Con este espacio, tienen el privilegio de gozar de los talleres impartidos por el equipo pedagógico de Progrentis a <strong>costo cero</strong>. Este es un plus por ser una institución Progrentis comprometida con la transformación educativa.</p>
+                    
+                    <p>Los motivamos a que puedan dar un buen uso a todos estos cursos de formación docente y que en el ámbito profesional puedan utilizar todos estos conocimientos que estarán adquiriendo pronto.</p>
+                </div>
+            </div>
+            
+            <div class="video-section">
+                <h3 style="color: #0062cc; margin-top: 0;">Video de Bienvenida</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/sYjplxdbdXU?si=F7n7MAux84vUhCJT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p style="margin-top: 20px;">Mira nuestro video especial de bienvenida para conocer más sobre Progrentis</p>
+            </div>
+            
+            <p>Adicionalmente, les comparto la oferta de cursos disponibles 24/7 para que puedan conocerlos y realizarlos desde FORUM, además de un pequeño manual con los pasos para ingresar.</p>
+            
+            <div class="action-buttons">
+                <a href="https://forumapp.progrentis.com/cartelera-cursos/" class="button">Ver Oferta de Cursos</a>
+                <a href="https://drive.google.com/file/d/1oXcv1EgAouMo8pXxFv5WrsgeTGnpmW_7/view?usp=sharing" class="button">Descargar Manual</a>
+            </div>
+            
+            <div class="signature">
+                <p>Desde ahora me pongo a sus órdenes para poder ayudarles en lo que necesiten.</p>
+                <p>Que tengan una excelente semana.</p>
+                <p><strong>¡Saludos!</strong></p>
+                <div class="signature-name">Nathan Castillo Coto</div>
+                <div class="signature-title">Equipo de Operaciones, Soporte, Servicio y Calidad</div>
+                <div>Grupo Mentora Latinoamérica y Caribe</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="social-links">
+                <a href="#" class="social-button">F</a>
+                <a href="#" class="social-button">T</a>
+                <a href="#" class="social-button">I</a>
+                <a href="#" class="social-button">L</a>
+            </div>
+            <p>© 2025 Progrentis | Grupo Mentora Latinoamérica y Caribe</p>
+            <p>Para soporte técnico: <a href="mailto:soporte@progrentis.com">soporte@progrentis.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
