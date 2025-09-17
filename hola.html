@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Actualización SO - Presentación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            color: #2c3e50;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 60px;
+            position: relative;
+            animation: fadeIn 0.5s ease-in;
+            min-height: 80vh;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            background: #E8F4FD;
+            color: #5A7A95;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Slide de portada */
+        .title-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #E8F4FD 0%, #F0E8FF 100%);
+            color: #2c3e50;
+        }
+
+        .title-slide h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            color: #34495e;
+            font-weight: 300;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .title-slide .authors {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            color: #5a6c7d;
+        }
+
+        .title-slide .university {
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .title-slide .course {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        /* Slides de contenido */
+        .content-slide h2 {
+            font-size: 2.2em;
+            color: #34495e;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 300;
+            border-bottom: 2px solid #E8F4FD;
+            padding-bottom: 15px;
+        }
+
+        .content-slide h3 {
+            font-size: 1.6em;
+            color: #5a6c7d;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .content-slide ul {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .content-slide li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            border-left: 3px solid #A8E6CF;
+            margin-left: 15px;
+            font-weight: 300;
+        }
+
+        .highlight-box {
+            background: #FFF9E6;
+            border: 2px solid #FFE082;
+            color: #5D4E37;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #5D4E37;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #F0F8FF;
+            border: 2px solid #E3F2FD;
+            color: #2c3e50;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: #5A7A95;
+        }
+
+        .stat-box div:last-child {
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .phase-card {
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 1.1em;
+            border: 2px solid;
+        }
+
+        .phase-1 {
+            background: #FFE5E5;
+            border-color: #FFCCCB;
+            color: #8B4513;
+        }
+
+        .phase-2 {
+            background: #E5F9F6;
+            border-color: #A8E6CF;
+            color: #2E8B57;
+        }
+
+        .phase-3 {
+            background: #F3E5F5;
+            border-color: #DDA0DD;
+            color: #663399;
+        }
+
+        .phase-card h3 {
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 4px solid #A8E6CF;
+            border-radius: 15px;
+        }
+
+        .timeline-item h4 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .timeline-item p {
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            border: 2px solid #E8F4FD;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .benefit-card h3 {
+            color: #5A7A95;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+
+        .benefit-card p {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Controles de navegación */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #E8F4FD;
+            border: 2px solid #BBDEFB;
+            color: #5A7A95;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-button:hover {
+            background: #BBDEFB;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 30px;
+        }
+
+        .next {
+            right: 30px;
+        }
+
+        /* Indicadores de posición */
+        .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E8F4FD;
+            border: 2px solid #BBDEFB;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #5A7A95;
+        }
+
+        /* Contador de slides */
+        .slide-counter {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #E8F4FD;
+            color: #5A7A95;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+                width: 95%;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.2em;
+            }
+            
+            .content-slide h2 {
+                font-size: 1.8em;
+            }
+            
+            .phases-grid, .benefit-grid, .stats-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .nav-button {
+                padding: 12px 15px;
+                font-size: 16px;
+            }
+            
+            .prev {
+                left: 15px;
+            }
+            
+            .next {
+                right: 15px;
+            }
+        }
+
+        /* Atajos de teclado info */
+        .keyboard-info {
+            position: absolute;
+            bottom: 80px;
+            left: 30px;
+            color: #7f8c8d;
+            font-size: 12px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Contador -->
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">10</span>
+        </div>
+
+        <!-- Slide 1: Portada -->
+        <div class="slide title-slide active">
+            <div class="slide-number">1</div>
+            <h1>Actualización de Sistema Operativo en Servidores</h1>
+            <div class="subtitle">Proyecto de Infraestructura TI</div>
+            <div class="authors">
+                Nathan Castillo • Jimena Mata • Krizzia Vargas • Brittany Chaves
+            </div>
+            <div class="university">Universidad CENFOTEC</div>
+            <div class="course">Administración de Proyectos 2</div>
+        </div>
+
+        <!-- Slide 2: Objetivo del Proyecto -->
+        <div class="slide content-slide">
+            <div class="slide-number">2</div>
+            <h2>Objetivo del Proyecto</h2>
+            <div class="highlight-box">
+                <h3>Modernización de Infraestructura</h3>
+                <p style="font-size: 1.1em;">Actualizar el sistema operativo de servidores críticos para garantizar seguridad, compatibilidad y estabilidad</p>
+            </div>
+            <ul>
+                <li>Mejorar la seguridad de la infraestructura</li>
+                <li>Asegurar compatibilidad con aplicaciones modernas</li>
+                <li>Garantizar soporte técnico del fabricante</li>
+                <li>Aumentar la estabilidad del sistema</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Estructura del Proyecto (WBS) -->
+        <div class="slide content-slide">
+            <div class="slide-number">3</div>
+            <h2>Estructura del Proyecto</h2>
+            <div class="phases-grid">
+                <div class="phase-card phase-1">
+                    <h3>ANÁLISIS</h3>
+                    <p>Relevamiento<br>Riesgos<br>Requerimientos</p>
+                </div>
+                <div class="phase-card phase-2">
+                    <h3>DISEÑO</h3>
+                    <p>Arquitectura<br>Migración<br>Pruebas Piloto</p>
+                </div>
+                <div class="phase-card phase-3">
+                    <h3>IMPLEMENTACIÓN</h3>
+                    <p>Preparación<br>Actualización<br>Validación</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Datos del Proyecto -->
+        <div class="slide content-slide">
+            <div class="slide-number">4</div>
+            <h2>Datos Clave del Proyecto</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number">30</div>
+                    <div>Actividades</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">81</div>
+                    <div>Días de Duración</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$15,100</div>
+                    <div>Presupuesto Total</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Cronograma -->
+        <div class="slide content-slide">
+            <div class="slide-number">5</div>
+            <h2>Cronograma del Proyecto</h2>
+            <div class="timeline-item">
+                <h4>Fase de Análisis</h4>
+                <p>01/10 - 14/10 | Diagnóstico y requerimientos</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Fase de Diseño</h4>
+                <p>15/10 - 02/11 | Arquitectura y pruebas piloto</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Fase de Implementación</h4>
+                <p>05/11 - 21/12 | Actualización y validación</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Gestión de Calidad -->
+        <div class="slide content-slide">
+            <div class="slide-number">6</div>
+            <h2>Gestión de Calidad</h2>
+            <h3>Aseguramiento de Calidad</h3>
+            <ul>
+                <li>Estándares de actualización</li>
+                <li>Documentación y revisión por pares</li>
+                <li>Capacitación del personal</li>
+            </ul>
+            <h3>Control de Calidad</h3>
+            <ul>
+                <li>Verificación de inventarios</li>
+                <li>Validación de respaldos</li>
+                <li>Monitoreo post-implementación</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7: Gestión de Riesgos -->
+        <div class="slide content-slide">
+            <div class="slide-number">7</div>
+            <h2>Gestión de Riesgos</h2>
+            <div class="highlight-box">
+                <h3>Estrategias de Mitigación</h3>
+            </div>
+            <ul>
+                <li>Matriz de riesgos actualizada periódicamente</li>
+                <li>Planes de contingencia y respaldo</li>
+                <li>Pruebas en ambiente controlado</li>
+                <li>Ventanas de mantenimiento autorizadas</li>
+                <li>Validación de compatibilidad previa</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Recursos y Equipo -->
+        <div class="slide content-slide">
+            <div class="slide-number">8</div>
+            <h2>Recursos del Proyecto</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number">PM</div>
+                    <div>Gerente de Proyecto</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">TI</div>
+                    <div>Equipo Técnico</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">EXT</div>
+                    <div>Consultores</div>
+                </div>
+            </div>
+            <ul>
+                <li>Arquitecto de Sistemas</li>
+                <li>Ingenieros de Infraestructura</li>
+                <li>Especialistas en Seguridad</li>
+                <li>Equipo de Testing y QA</li>
+            </ul>
+        </div>
+
+        <!-- Slide 9: Beneficios Esperados -->
+        <div class="slide content-slide">
+            <div class="slide-number">9</div>
+            <h2>Beneficios Esperados</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <h3>SEGURIDAD</h3>
+                    <p>Parches actualizados<br>Vulnerabilidades resueltas</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>RENDIMIENTO</h3>
+                    <p>Mayor eficiencia<br>Recursos optimizados</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>SOPORTE</h3>
+                    <p>Soporte del fabricante<br>Actualizaciones futuras</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Cierre -->
+        <div class="slide title-slide">
+            <div class="slide-number">10</div>
+            <h1>¡Gracias!</h1>
+            <div class="subtitle">¿Preguntas?</div>
+            <div style="margin-top: 50px; font-size: 1.1em;">
+                <p>Proyecto de Actualización de SO en Servidores</p>
+                <p>Universidad CENFOTEC - 2025</p>
+            </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <button class="nav-button prev" onclick="changeSlide(-1)">‹</button>
+        <button class="nav-button next" onclick="changeSlide(1)">›</button>
+
+        <!-- Indicadores de posición -->
+        <div class="slide-indicators">
+            <span class="indicator active" onclick="currentSlide(1)"></span>
+            <span class="indicator" onclick="currentSlide(2)"></span>
+            <span class="indicator" onclick="currentSlide(3)"></span>
+            <span class="indicator" onclick="currentSlide(4)"></span>
+            <span class="indicator" onclick="currentSlide(5)"></span>
+            <span class="indicator" onclick="currentSlide(6)"></span>
+            <span class="indicator" onclick="currentSlide(7)"></span>
+            <span class="indicator" onclick="currentSlide(8)"></span>
+            <span class="indicator" onclick="currentSlide(9)"></span>
+            <span class="indicator" onclick="currentSlide(10)"></span>
+        </div>
+
+        <!-- Info de atajos -->
+        <div class="keyboard-info">
+            Usa las flechas del teclado o clica los botones para navegar
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        const totalSlides = 10;
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName("slide");
+            const indicators = document.getElementsByClassName("indicator");
+            
+            if (n > totalSlides) slideIndex = 1;
+            if (n < 1) slideIndex = totalSlides;
+            
+            // Ocultar todos los slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            // Desactivar todos los indicadores
+            for (let i = 0; i < indicators.length; i++) {
+                indicators[i].classList.remove("active");
+            }
+            
+            // Mostrar slide actual
+            slides[slideIndex - 1].classList.add("active");
+            indicators[slideIndex - 1].classList.add("active");
+            
+            // Actualizar contador
+            document.getElementById("current-slide").textContent = slideIndex;
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            } else if (event.key === 'Home') {
+                currentSlide(1);
+            } else if (event.key === 'End') {
+                currentSlide(totalSlides);
+            }
+        });
+
+        // Auto-navegación opcional (descomenta si quieres)
+        // setInterval(function() {
+        //     changeSlide(1);
+        // }, 10000);
+    </script>
+</body>
+</html>
